@@ -1,0 +1,110 @@
+
+<!doctype html>
+<head>
+<!--- TRY -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+</style>
+<script type="text/javascript" src="<?php echo base_url() ?>assets/template/limitless/assets/js/plugins/tables/datatables/datatables.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/template/limitless/assets/js/plugins/forms/selects/select2.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/template/limitless/assets/js/pages/form_layouts.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>media/admin/limitless/assets/js/plugins/notifications/pnotify.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>media/admin/limitless/assets/js/pages/components_notifications_pnotify.js"></script>
+</head>
+
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h6 class="panel-title"><i class="icon-file-text"></i>
+                  <?php
+                    foreach ($log_ruang as $value) {
+                      $nama_ruang =  $value->ruang_nama;
+                    }
+                    echo $nama_ruang;
+                  ?>
+                </h6>
+            </div>
+            <div class="panel-body">
+                <div class="tabbable">
+                    <div class="row" style="margin-bottom: 10px">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <div style="margin-top: 8px" id="message">
+                                <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+                            </div>
+                        </div>
+                        <div class="col-md-1 text-right">
+                        </div>
+
+                    </div>
+
+                    <table class="table table-striped" style="margin-bottom: 10px" id="tabelflog1">
+                      <thead>   
+                      <tr>
+                        <th align="center">ID Log</th>
+                        <th align="center">Nama Kelas</th>
+                        <th>Semester</th>
+                        <th>Mapel</th>
+                        <th>Hari</th>
+                        <th>Jam Masuk</th>
+                        <th>Jam Keluar</th>
+                      </tr>
+                    </thead>
+                      <tbody>
+                        <?php
+                        foreach ($log_ruang as $value)
+                        {
+                            ?>
+                            <tr>
+                               <td><?php echo $value->log_id; ?></td>
+                               <td><?php echo $value->kelas_nama; ?></td>
+                               <td><?php echo $value->semester_nama; ?></td>
+                               <td><?php echo $value->makul_nama; ?></td>
+                               <td><?php echo $value->log_tanggal; ?></td>
+                               <td><?php echo $value->log_jam_masuk ?></td>
+                               <td><?php echo $value->log_jam_keluar ?></td>
+                        </tr>
+                        <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+
+        <script>
+             $('#tabelflog1').dataTable();
+         </script> 
+         <div class="col-md-6 text-right">
+
+         </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+     </div>
+     </body>
+
+     
+</div>
+
+  </div>
+
+</div>
+</div>
+</div>
+</div>
+<div style="display:none">
+    <?php $this->load->view('limitless/not_visible/not_usable'); ?>
+</div>
